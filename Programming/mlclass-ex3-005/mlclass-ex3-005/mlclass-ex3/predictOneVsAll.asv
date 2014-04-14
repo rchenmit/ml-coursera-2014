@@ -30,14 +30,18 @@ X = [ones(m, 1) X];
 %       for each row.
 %       
 
+p_each_k = p;
 for k = 1:num_labels
     this_p = zeros(m, 1);
-    X_theta_T = X*all_theta(k,:);
+    X_theta_T = X*all_theta(k,:)';
     logistic_of_inputs = sigmoid(X_theta_T);
-    this_p(logistic_of_inputs>=0.5) = 1;
-    this_p(logistic_of_inputs<0.5) = 0;
-    p = this_p;
+    %this_p(logistic_of_inputs>=0.5) = 1;
+    %this_p(logistic_of_inputs<0.5) = 0;
+    p_each_k = [p_each_k, this_p];
 end
+
+
+
 
 
 

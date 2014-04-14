@@ -30,15 +30,20 @@ X = [ones(m, 1) X];
 %       for each row.
 %       
 
+p_each_k = p;
 for k = 1:num_labels
-    this_p = zeros(m, 1);
-    X_theta_T = X*all_theta(k,:);
+    %this_p = zeros(m, 1);
+    X_theta_T = X*all_theta(k,:)';
     logistic_of_inputs = sigmoid(X_theta_T);
-    this_p(logistic_of_inputs>=0.5) = 1;
-    this_p(logistic_of_inputs<0.5) = 0;
-    p = this_p
-
+    %this_p(logistic_of_inputs>=0.5) = 1;
+    %this_p(logistic_of_inputs<0.5) = 0;
+    p_each_k = [p_each_k, logistic_of_inputs];
 end
+
+[maxP,index] = max(p_each_k,[],2); %get the max Probability and the index of that (index corresponding to the feature class)
+p = index;
+p = p-1; %because we appended a list of 1's to the matrix preceding the first "label" (For k labels)
+
 
 
 
