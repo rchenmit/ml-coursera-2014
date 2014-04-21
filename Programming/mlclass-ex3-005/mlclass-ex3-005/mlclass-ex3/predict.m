@@ -20,14 +20,26 @@ p = zeros(size(X, 1), 1);
 %       information see 'help max'. If your examples are in rows, then, you
 %       can use max(A, [], 2) to obtain the max for each row.
 %
+X = [ones(m, 1) X];
+a1 = X;
+z2 = 0*a1*Theta1'; %Z for HIDDEN LAYER - initialize to matrix all 0's with the correct dimensions
+a2 = z2;
+num_nodes_Theta1 = size(Theta1,1);
+for k = 1:num_nodes_Theta1
+    z2(:,k) = a1*Theta1(k,:)';
+    a2(:,k) = sigmoid(z2(:,k));
+end
+a2 = [ones(m, 1) a2];
+z3 = 0*a2*Theta2'; %Z for OUTPUT LAYER - initialize to matrix all 0's with the correct dimensions
+for k = 1:num_labels
+   z3(:,k) = a2*Theta2(k,:)'; 
+   a3(:,k) = sigmoid(z3(:,k));
+end
 
-
-
-
-
-
-
-
+%FIND the LARGEST OUTPUT for (h_theta(x))_k; index should hold the INDEX of
+%the MOST PROBABLE CLASS LABEL (out of num_labels *labels*)
+[maxP,index] = max(a3,[],2); 
+p = index;
 
 % =========================================================================
 
