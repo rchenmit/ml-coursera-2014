@@ -15,11 +15,9 @@ sim = 0;
 %               sigma
 %
 %
+% This is equivalent to computing the kernel on every pair of examples
 
-
-
-
-
+sim = exp(-sum((x1-x2).^2) / (2*sigma^2));
 
 % =============================================================
     

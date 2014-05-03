@@ -99,9 +99,14 @@ while ~isempty(email_contents)
 
     ind=find(ismember(vocabList,str));
     if length(ind) > 0
-        word_indices = [word_indices; ind];
-    end
-    
+        
+
+
+
+
+
+
+
 
     % =============================================================
 

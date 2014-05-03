@@ -47,9 +47,10 @@ x = zeros(n, 1);
 %              x = [ 0 0 0 0 1 0 0 0 ... 0 0 0 0 1 ... 0 0 0 1 0 ..];
 %
 %
+x = find(
 
-all_indices_in_vocablist = 1:n; %one number for each feature
-x = ismember( all_indices_in_vocablist,word_indices); %this checks if the values of all_indices_in_vocablist are in word_indices (the email we're analyzing)
+
+
 
 
 % =========================================================================
