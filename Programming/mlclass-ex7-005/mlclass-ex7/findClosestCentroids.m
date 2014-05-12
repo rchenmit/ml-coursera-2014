@@ -21,9 +21,14 @@ idx = zeros(size(X,1), 1);
 % Note: You can use a for-loop over the examples to compute this.
 %
 
-
-
-
+%loop thru every example:
+for i = 1:length(X)
+    this_example = X(i,:);
+    centroid_comparison_maxtrix = ones(size(centroids, 1), 1) * this_example;
+    square_of_norm = sum((centroid_comparison_maxtrix - centroids).^2,2).^0.5;
+    [dist, ind_closest] = min(square_of_norm);
+    idx(i) = ind_closest;
+end
 
 
 

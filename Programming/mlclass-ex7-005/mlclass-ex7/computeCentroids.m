@@ -25,11 +25,12 @@ centroids = zeros(K, n);
 %
 % Note: You can use a for-loop over the centroids to compute this.
 %
-
-
-
-
-
+for i = 1:K %loop thru all of the centroids
+    centroid_dist_matrix = zeros(length(idx),1) * X(1,:); %matrix of zeros
+    centroid_dist_matrix(idx==i, :) = X(idx==i, : );
+    mean_this_centroid = 1/sum(idx==i) * sum(centroid_dist_matrix,1);
+    centroids(i,:) = mean_this_centroid;
+end
 
 
 

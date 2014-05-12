@@ -17,8 +17,11 @@ Z = zeros(size(X, 1), K);
 %                    x = X(i, :)';
 %                    projection_k = x' * U(:, k);
 %
-
-
+for k = 1:K
+    %x = X(i,:)';
+    projection_k_all_examples = X* U(:,k); %basically, you take the example, and multiply by the k-th eigenvector
+    Z(:,k) = projection_k_all_examples;
+end
 
 
 % =============================================================
